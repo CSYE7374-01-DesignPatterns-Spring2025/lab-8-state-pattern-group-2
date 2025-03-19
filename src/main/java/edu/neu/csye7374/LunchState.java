@@ -1,6 +1,17 @@
 package edu.neu.csye7374;
 
-public class LunchState implements RestaurantState{
+import java.util.ArrayList;
+
+public class LunchState implements RestaurantState {
+    private ArrayList<MenuItem> menuItems;
+
+    public LunchState() {
+        this.menuItems = new ArrayList<>();
+        // Initialize lunch menu items
+        menuItems.add(new MenuItem(1, "Hot Dog", 1.99, "hot dog"));
+        menuItems.add(new MenuItem(2, "Salad", 2.99, "salad"));
+        menuItems.add(new MenuItem(3, "Hamburger", 3.99, "hamburger"));
+    }
 
     @Override
     public void displayState() {
@@ -11,10 +22,13 @@ public class LunchState implements RestaurantState{
     public void displayMenu() {
         System.out.println("Lunch Menu:");
         System.out.println("ITEM\tPRICE\tDESCRIPTION");
-        System.out.println("1\t$1.99\thot dog");
-        System.out.println("2\t$2.99\tsalad");
-        System.out.println("3\t$3.99\thamburger");
+        for (MenuItem item : menuItems) {
+            System.out.println(item);
+        }
     }
 
-
+    @Override
+    public ArrayList<MenuItem> getMenuItems() {
+        return menuItems;
+    }
 }
